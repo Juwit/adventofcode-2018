@@ -1,6 +1,6 @@
 const expect = require("chai").expect;
 
-const {hasLetterOccurencies, twoOfAny, threeOfAny, checksum} = require("../src/02-inventory-management-system");
+const {hasLetterOccurencies, twoOfAny, threeOfAny, checksum, distance, lowestDistance, lowestDistanceCommonLetters} = require("../src/02-inventory-management-system");
 
 
 describe("--- Day 2: Inventory Management System ---", () => {
@@ -58,7 +58,31 @@ describe("--- Day 2: Inventory Management System ---", () => {
     });
 
     describe("--- Part Two ---", () => {
+        const boxIds = [
+            "abcde",
+            "fghij",
+            "klmno",
+            "pqrst",
+            "fguij",
+            "axcye",
+            "wvxyz",
+        ];
 
+        it("should count the distance between ids", () => {
+            expect( distance("abcde", "axcye") ).to.equal(2);
+            expect( distance("fghij", "fguij") ).to.equal(1);
+        });
+
+        it("should find the ids with the lowest distance", () => {
+            let result = lowestDistance(boxIds);
+            expect(result.a).to.equal("fghij");
+            expect(result.b).to.equal("fguij");
+        });
+
+        it("should compute the least-distance boxIds", () => {
+            let result = lowestDistanceCommonLetters(boxIds);
+            expect(result).to.equal("fgij");
+        });
     });
 
 });
