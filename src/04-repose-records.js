@@ -75,7 +75,24 @@ function findMostAsleepMinute(records, guard){
             timeAsleepAtMinute = value;
         }
     });
-    return maxMinute;
+    return {minute: maxMinute, timeAsleep: timeAsleepAtMinute};
+}
+
+function findGuardMostAsleepOnSameMinute(records){
+    // list all guards
+    const guards = records.reduce((set, record) => set.add(record.guard), new Set());
+    let guard;
+    let guardMinute;
+    let guardTimeAsleep = 0;
+    guards.forEach(currentGuard => {
+       const {minute, timeAsleep} = findMostAsleepMinute(records, currentGuard);
+       if(timeAsleep > guardTimeAsleep){
+           guard = currentGuard;
+           guardMinute = minute;
+           guardTimeAsleep = timeAsleep;
+       }
+    });
+    return {guard, minute: guardMinute};
 }
 
 function solve(){
@@ -83,10 +100,13 @@ function solve(){
     const records = parseRecords(myInput);
 
     const part1Guard = findMostAsleepGuard(records);
-    const part1Minutes = findMostAsleepMinute(records, part1Guard);
+    const part1Minute = findMostAsleepMinute(records, part1Guard).minute;
+    const {guard: part2Guard, minute: part2Minute} = findGuardMostAsleepOnSameMinute(records);
 
     console.log("--- Day 4: Repose Record ---");
-    console.log(`Puzzle answer : ${part1Guard * part1Minutes}`);
+    console.log(`Puzzle answer : ${part1Guard * part1Minute}`);
+    console.log("--- Part Two ---");
+    console.log(`Puzzle answer : ${part2Guard * part2Minute}`);
     console.log();
 }
 
@@ -94,5 +114,6 @@ module.exports = {
     parseRecords,
     findMostAsleepGuard,
     findMostAsleepMinute,
+    findGuardMostAsleepOnSameMinute,
     solve
 };

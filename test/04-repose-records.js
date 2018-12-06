@@ -1,13 +1,11 @@
 const expect = require("chai").expect;
 
-const {parseRecords, findMostAsleepGuard, findMostAsleepMinute} = require("../src/04-repose-records");
+const {parseRecords, findMostAsleepGuard, findMostAsleepMinute, findGuardMostAsleepOnSameMinute} = require("../src/04-repose-records");
 
 describe("--- Day 4: Repose Record ---", () => {
 
-    describe("--- Part One ---", () => {
-
-        let recordsText =
-            `[1518-11-01 00:00] Guard #10 begins shift
+    let recordsText =
+        `[1518-11-01 00:00] Guard #10 begins shift
 [1518-11-01 00:05] falls asleep
 [1518-11-01 00:25] wakes up
 [1518-11-01 00:30] falls asleep
@@ -24,6 +22,8 @@ describe("--- Day 4: Repose Record ---", () => {
 [1518-11-05 00:03] Guard #99 begins shift
 [1518-11-05 00:45] falls asleep
 [1518-11-05 00:55] wakes up`;
+
+    describe("--- Part One ---", () => {
 
         it("should parse the records to find the guards", ()=>{
             const record = parseRecords(recordsText);
@@ -109,13 +109,21 @@ describe("--- Day 4: Repose Record ---", () => {
         it("should find that guard #10 is most asleep during minute 24", () => {
             const record = parseRecords(recordsText);
             const guard= findMostAsleepGuard(record);
-            const minute = findMostAsleepMinute(record, guard);
+            const {minute} = findMostAsleepMinute(record, guard);
             expect(minute).to.equal(24);
         });
 
     });
 
     describe("--- Part Two ---", () => {
+
+        it("should find that guard #99 is most frequently asleep on minute 45", () => {
+            const record = parseRecords(recordsText);
+            const {guard, minute} = findGuardMostAsleepOnSameMinute(record);
+            expect(guard).to.equal(99);
+            expect(minute).to.equal(45);
+        });
+
     });
 
 });
