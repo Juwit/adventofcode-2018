@@ -1,18 +1,18 @@
 const expect = require("chai").expect;
 
-const {parse, manhattanDistance, closest, buildGrid, greatestArea} = require("../src/06-chronal-coordinates");
+const {parse, manhattanDistance, closest, buildGrid, greatestArea, distanceSum, distanceSumArea} = require("../src/06-chronal-coordinates");
 
 describe("--- Day 6: Chronal Coordinates ---", () => {
 
-    describe("--- Part One ---", () => {
+    let pointA = {x:1, y:1};
+    let pointB = {x:1, y:6};
+    let pointC = {x:8, y:3};
+    let pointD = {x:3, y:4};
+    let pointE = {x:5, y:5};
+    let pointF = {x:8, y:9};
+    const points = [pointA, pointB, pointC, pointD, pointE, pointF];
 
-        let pointA = {x:1, y:1};
-        let pointB = {x:1, y:6};
-        let pointC = {x:8, y:3};
-        let pointD = {x:3, y:4};
-        let pointE = {x:5, y:5};
-        let pointF = {x:8, y:9};
-        const points = [pointA, pointB, pointC, pointD, pointE, pointF];
+    describe("--- Part One ---", () => {
 
         it("should parse points", () => {
             let input = `1, 1
@@ -64,7 +64,20 @@ describe("--- Day 6: Chronal Coordinates ---", () => {
             const grid = buildGrid(points);
             const result = greatestArea(grid, points);
 
-            expect(result).to.equal(17);
+            expect(result).to.equal(9);
+        });
+
+    });
+
+    describe("--- Part Two ---", () => {
+
+        it("should compute the sum of the distances for a point", () => {
+           expect(distanceSum({x:4,y:3}, points)).to.equal(30);
+        });
+
+        it("should find the area size of maximal distanceSum", () => {
+
+           expect(distanceSumArea(points, 32)).to.equal(16);
         });
 
     });

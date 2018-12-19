@@ -76,15 +76,41 @@ function greatestArea(grid, points){
     return max;
 }
 
+function distanceSum(from, points){
+    return points.reduce((current, point)=>current + manhattanDistance(from, point), 0);
+}
+
+function distanceSumArea(points, maxDistance) {
+    const maxX = points.map(point => point.x).reduce((max, current) => current>max?current:max, 0) * 2;
+    const maxY = points.map(point => point.y).reduce((max, current) => current>max?current:max, 0) * 2;
+
+    const grid = new Array(maxX).fill(undefined).map(() => new Array(maxY));
+
+    let area = 0;
+
+    for(let x = 0; x < maxX; x++){
+        for(let y = 0; y < maxY; y++){
+            let point = {x,y};
+            if( distanceSum(point, points) < maxDistance ){
+                area++;
+            }
+        }
+    }
+    return area;
+}
+
 function solve(){
     const myInput = require("fs").readFileSync("data/06-chronal-coordinates.txt").toString();
 
     const points = parse(myInput);
     const grid = buildGrid(points);
     const part1 = greatestArea(grid, points);
+    const part2 = distanceSumArea(points, 10000);
 
     console.log("--- Day 6: Chronal Coordinates ---");
     console.log(`Puzzle answer : ${part1}`);
+    console.log("--- Part Two ---");
+    console.log(`Puzzle answer : ${part2}`);
     console.log();
 }
 
@@ -94,5 +120,7 @@ module.exports = {
     closest,
     buildGrid,
     greatestArea,
+    distanceSum,
+    distanceSumArea,
     solve
 };
