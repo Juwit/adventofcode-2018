@@ -8,3 +8,4 @@ require("./src/04-repose-records").solve();
 require("./src/05-alchemical-reduction").solve();
 require("./src/06-chronal-coordinates").solve();
 require("./src/07-the-sum-of-its-parts").solve();
+require("./src/08-memory-maneuver").solve();
