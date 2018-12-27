@@ -13,8 +13,28 @@ function buildNode(nodeSpec){
     for(let i = 0; i < metadata; i++){
         node.metadata.push(subSpec[i]);
     }
+
+    node.value = value;
+
     subSpec = subSpec.slice(metadata);
     return {node, subSpec};
+}
+
+function value(){
+    if(this.children.length === 0){
+        return this.metadata.reduce((a,b) => a+b, 0);
+    }
+    else{
+        // using metadata as indexes
+        let sum = 0;
+        this.metadata.forEach(value => {
+           const nodeIndex = value - 1;
+           if(nodeIndex >= 0 && nodeIndex < this.children.length){
+               sum += this.children[nodeIndex].value();
+           }
+        });
+        return sum;
+    }
 }
 
 function metadataSum(node){
@@ -32,6 +52,7 @@ function solve(){
 
     const tree = buildNode(nodeSpec).node;
     const part1 = metadataSum(tree);
+    const part2 = tree.value();
 
     console.log("--- Day 8: Memory Maneuver ---");
     console.log(`Puzzle answer : ${part1}`);

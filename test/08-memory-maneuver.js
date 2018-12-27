@@ -52,6 +52,28 @@ describe("--- Day 8: Memory Maneuver ---", () => {
 
     describe("--- Part Two ---", () => {
 
+        it("should compute the value of a no child node", () => {
+            const nodeBSpec = [0, 3, 10, 11, 12];
+            const nodeB = buildNode(nodeBSpec).node;
+
+            const nodeDSpec = [0, 1, 99];
+            const nodeD = buildNode(nodeDSpec).node;
+
+            expect(nodeB.value()).to.equal(33);
+            expect(nodeD.value()).to.equal(99);
+        });
+
+        it("should compute the value of a node with children using metadata indexes", () => {
+            const nodeCSpec = [1, 1, 0, 1, 99, 2];
+            const nodeC = buildNode(nodeCSpec).node;
+
+            expect(nodeC.value()).to.equal(0);
+
+            const nodeASpec = input.split(" ").map(a => parseInt(a));
+            const nodeA = buildNode(nodeASpec).node;
+            expect(nodeA.value()).to.equal(66);
+        });
+
     });
 
 });
