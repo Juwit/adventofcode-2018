@@ -1,9 +1,13 @@
 const expect = require("chai").expect;
 
-const {parseClaim, computeOverlapping, overlaps, findNonOverlapping} = require("../src/03/03-no-matter-how-you-slice-it");
+const part1 = require("./part1");
+const part2 = require("./part2");
 
+const {parseClaim} = require("./common");
+const {computeOverlapping} = part1;
+const {overlaps, findNonOverlapping} = part2;
 
-describe("--- Day 3: No Matter How You Slice It ---", () => {
+describe(part1.title, () => {
 
     const claims = [
         "#1 @ 1,3: 4x4",
@@ -23,7 +27,7 @@ describe("--- Day 3: No Matter How You Slice It ---", () => {
         });
 
         it("should count overlapping square inches", () => {
-            let result = computeOverlapping(claims);
+            let result = computeOverlapping(claims.map(parseClaim));
             expect(result).to.equal(4);
         });
 
