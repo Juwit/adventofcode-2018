@@ -28,7 +28,15 @@ console.log(`Puzzle answer : ${day03Part2.solve()}`);
 
 console.log();
 
-require("./src/04/04-repose-records").solve();
+const day04Part1 = require("./src/04/part1");
+const day04Part2 = require("./src/04/part2");
+console.log(day04Part1.title);
+console.log(`Puzzle answer : ${day04Part1.solve()}`);
+console.log("--- Part Two ---");
+console.log(`Puzzle answer : ${day04Part2.solve()}`);
+
+console.log();
+
 require("./src/05/05-alchemical-reduction").solve();
 require("./src/06/06-chronal-coordinates").solve();
 require("./src/07/07-the-sum-of-its-parts").solve();

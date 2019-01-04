@@ -1,8 +1,13 @@
 const expect = require("chai").expect;
 
-const {parseRecords, findMostAsleepGuard, findMostAsleepMinute, findGuardMostAsleepOnSameMinute} = require("../src/04/04-repose-records");
+const part1 = require("./part1");
+const part2 = require("./part2");
 
-describe("--- Day 4: Repose Record ---", () => {
+const {parseRecords} = require("./common");
+const {findMostAsleepGuard, findMostAsleepMinute} = part1;
+const {findGuardMostAsleepOnSameMinute} = part2;
+
+describe(part1.title, () => {
 
     let recordsText =
         `[1518-11-01 00:00] Guard #10 begins shift

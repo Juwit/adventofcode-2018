@@ -36,27 +36,6 @@ function parseRecords(recordsText){
     return records;
 }
 
-function findMostAsleepGuard(records){
-    const guardSleepTime = new Map();
-    // calculating sleep time for all records
-    for(let record of records){
-        if(!guardSleepTime.has(record.guard)){
-            guardSleepTime.set(record.guard, 0);
-        }
-        let minutesAsleep = record.minutes.reduce((sum, minute) => sum + minute, 0);
-        guardSleepTime.set(record.guard, guardSleepTime.get(record.guard) + minutesAsleep);
-    }
-    let mostAsleepGuard;
-    let timeAsleepGuard = 0;
-    for(let guard of guardSleepTime.keys()){
-        if(guardSleepTime.get(guard) > timeAsleepGuard){
-            mostAsleepGuard = guard;
-            timeAsleepGuard = guardSleepTime.get(guard);
-        }
-    }
-    return mostAsleepGuard;
-}
-
 function findMostAsleepMinute(records, guard){
     const guardRecordsMinutes = records.filter(record => record.guard === guard).map(record => record.minutes);
     let cumulatedMinutes = new Array(60).fill(0);
@@ -99,21 +78,13 @@ function solve(){
     const myInput = require("fs").readFileSync("src/04/input.txt").toString();
     const records = parseRecords(myInput);
 
-    const part1Guard = findMostAsleepGuard(records);
-    const part1Minute = findMostAsleepMinute(records, part1Guard).minute;
     const {guard: part2Guard, minute: part2Minute} = findGuardMostAsleepOnSameMinute(records);
 
-    console.log("--- Day 4: Repose Record ---");
-    console.log(`Puzzle answer : ${part1Guard * part1Minute}`);
-    console.log("--- Part Two ---");
-    console.log(`Puzzle answer : ${part2Guard * part2Minute}`);
-    console.log();
+    return part2Guard * part2Minute;
 }
 
 module.exports = {
     parseRecords,
-    findMostAsleepGuard,
-    findMostAsleepMinute,
     findGuardMostAsleepOnSameMinute,
     solve
 };
