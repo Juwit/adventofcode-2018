@@ -1,9 +1,12 @@
 const expect = require("chai").expect;
 
-const computeFrequency = require("../src/01/01-chronal-calibration").computeFrequency;
-const computeFrequencyUntillRepetition = require("../src/01/01-chronal-calibration").computeFrequencyUntilRepetition;
+const part1 = require("./part1");
+const part2 = require("./part2");
 
-describe("--- Day 1: Chronal Calibration ---", () => {
+const {computeFrequency} = part1;
+const {computeFrequencyUntilRepetition} = part2;
+
+describe(part1.title, () => {
 
     describe("--- Part One ---", () => {
 
@@ -64,7 +67,7 @@ describe("--- Day 1: Chronal Calibration ---", () => {
 
         it("should compute device frequencies", ()=>{
             examples.forEach(example => {
-                let result = computeFrequencyUntillRepetition(example.frequencies.split(", "));
+                let result = computeFrequencyUntilRepetition(example.frequencies.split(", "));
                 expect(result).to.equal(example.result);
             })
         });

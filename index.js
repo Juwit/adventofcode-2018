@@ -1,7 +1,13 @@
 console.log("[Advent of Code 2018]");
 console.log();
 
-require("./src/01/01-chronal-calibration").solve();
+const day01Part1 = require("./src/01/part1");
+const day01Part2 = require("./src/01/part2");
+console.log(day01Part1.title);
+console.log(`Puzzle answer : ${day01Part1.solve()}`);
+console.log("--- Part Two ---");
+console.log(`Puzzle answer : ${day01Part2.solve()}`);
+
 require("./src/02/02-inventory-management-system").solve();
 require("./src/03/03-no-matter-how-you-slice-it").solve();
 require("./src/04/04-repose-records").solve();

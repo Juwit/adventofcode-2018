@@ -3,18 +3,6 @@ const functions = {
     "-" : (a,b) => a-b
 };
 
-function computeFrequency(frequencies){
-    let result = 0;
-
-    frequencies.forEach(freq => {
-       let operator = functions[freq.charAt(0)];
-       let operand = parseInt( freq.substr(1) );
-       result = operator(result, operand);
-    });
-
-    return result;
-}
-
 function computeFrequencyUntilRepetition(frequencies){
     let result = 0;
 
@@ -38,18 +26,10 @@ function solve(){
     const myInput = require("fs").readFileSync("src/01/input.txt").toString();
     const frequencies = myInput.split("\n");
 
-    const part1 = computeFrequency(frequencies);
-    const part2 = computeFrequencyUntilRepetition(frequencies)
-
-    console.log("--- Day 1: Chronal Calibration ---");
-    console.log(`Puzzle answer : ${part1}`);
-    console.log("--- Part Two ---");
-    console.log(`Puzzle answer : ${part2}`);
-    console.log();
+    return computeFrequencyUntilRepetition(frequencies)
 }
 
 module.exports = {
-    computeFrequency,
     computeFrequencyUntilRepetition,
     solve
 };
