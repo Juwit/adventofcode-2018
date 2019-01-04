@@ -1,8 +1,12 @@
 const expect = require("chai").expect;
 
-const {reacting, reduce, triggerFullReduction, removeUnits, optimizePolymer} = require("../src/05/05-alchemical-reduction");
+const part1 = require("./part1");
+const part2 = require("./part2");
 
-describe("--- Day 5: Alchemical Reduction ---", () => {
+const {reacting, reduce, triggerFullReduction} = part1;
+const {removeUnits, optimizePolymer} = part2;
+
+describe(part1.title, () => {
 
     let polymer = `dabAcCaCBAcCcaDA`;
 
