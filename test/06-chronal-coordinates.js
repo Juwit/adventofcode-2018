@@ -1,6 +1,6 @@
 const expect = require("chai").expect;
 
-const {parse, manhattanDistance, closest, buildGrid, greatestArea, distanceSum, distanceSumArea} = require("../src/06-chronal-coordinates");
+const {parse, manhattanDistance, closest, buildGrid, greatestArea, distanceSum, distanceSumArea} = require("../src/06/06-chronal-coordinates");
 
 describe("--- Day 6: Chronal Coordinates ---", () => {
 

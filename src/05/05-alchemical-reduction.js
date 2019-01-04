@@ -51,7 +51,7 @@ function optimizePolymer(polymer){
 }
 
 function solve(){
-    const myInput = require("fs").readFileSync("data/05-alchemical-reduction.txt").toString();
+    const myInput = require("fs").readFileSync("src/05/input.txt").toString();
 
     const part1 = triggerFullReduction(myInput);
     const part2 = optimizePolymer(myInput);

@@ -1,6 +1,6 @@
 const expect = require("chai").expect;
 
-const {parseClaim, computeOverlapping, overlaps, findNonOverlapping} = require("../src/03-no-matter-how-you-slice-it");
+const {parseClaim, computeOverlapping, overlaps, findNonOverlapping} = require("../src/03/03-no-matter-how-you-slice-it");
 
 
 describe("--- Day 3: No Matter How You Slice It ---", () => {

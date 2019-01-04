@@ -104,7 +104,7 @@ function findNonOverlapping(claims){
 }
 
 function solve(){
-    const myInput = require("fs").readFileSync("data/03-no-matter-how-you-slice-it.txt").toString();
+    const myInput = require("fs").readFileSync("src/03/input.txt").toString();
     const claims = myInput.split("\n");
 
     const part1 = computeOverlapping(claims);

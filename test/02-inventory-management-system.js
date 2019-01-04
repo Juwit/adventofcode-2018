@@ -1,6 +1,6 @@
 const expect = require("chai").expect;
 
-const {hasLetterOccurencies, twoOfAny, threeOfAny, checksum, distance, lowestDistance, lowestDistanceCommonLetters} = require("../src/02-inventory-management-system");
+const {hasLetterOccurencies, twoOfAny, threeOfAny, checksum, distance, lowestDistance, lowestDistanceCommonLetters} = require("../src/02/02-inventory-management-system");
 
 
 describe("--- Day 2: Inventory Management System ---", () => {

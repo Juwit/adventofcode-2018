@@ -104,7 +104,7 @@ function computeSteps(dependencyMap, timeOffset, workersCount){
 
 
 function solve(){
-    const myInput = require("fs").readFileSync("data/07-the-sum-of-its-parts.txt").toString();
+    const myInput = require("fs").readFileSync("src/07/input.txt").toString();
 
     const requirements = parse(myInput);
     let map = dependencyMap(requirements);

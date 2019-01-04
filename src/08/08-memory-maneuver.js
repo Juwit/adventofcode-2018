@@ -46,7 +46,7 @@ function metadataSum(node){
 }
 
 function solve(){
-    const myInput = require("fs").readFileSync("data/08-memory-maneuver.txt").toString();
+    const myInput = require("fs").readFileSync("src/08/input.txt").toString();
 
     const nodeSpec = myInput.split(" ").map(val => parseInt(val));
 

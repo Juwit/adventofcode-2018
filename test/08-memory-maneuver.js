@@ -1,6 +1,6 @@
 const expect = require("chai").expect;
 
-const {buildNode, metadataSum} = require("../src/08-memory-maneuver");
+const {buildNode, metadataSum} = require("../src/08/08-memory-maneuver");
 
 describe("--- Day 8: Memory Maneuver ---", () => {
 

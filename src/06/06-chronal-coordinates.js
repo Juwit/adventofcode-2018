@@ -100,7 +100,7 @@ function distanceSumArea(points, maxDistance) {
 }
 
 function solve(){
-    const myInput = require("fs").readFileSync("data/06-chronal-coordinates.txt").toString();
+    const myInput = require("fs").readFileSync("src/06/input.txt").toString();
 
     const points = parse(myInput);
     const grid = buildGrid(points);

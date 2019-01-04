@@ -1,6 +1,6 @@
 const expect = require("chai").expect;
 
-const {parse, dependencyMap, nextStep, order, computeTime, computeSteps} = require("../src/07-the-sum-of-its-parts");
+const {parse, dependencyMap, nextStep, order, computeTime, computeSteps} = require("../src/07/07-the-sum-of-its-parts");
 
 describe("--- Day 7: The Sum of Its Parts ---", () => {
 

@@ -1,7 +1,7 @@
 const expect = require("chai").expect;
 
-const computeFrequency = require("../src/01-chronal-calibration").computeFrequency;
-const computeFrequencyUntillRepetition = require("../src/01-chronal-calibration").computeFrequencyUntilRepetition;
+const computeFrequency = require("../src/01/01-chronal-calibration").computeFrequency;
+const computeFrequencyUntillRepetition = require("../src/01/01-chronal-calibration").computeFrequencyUntilRepetition;
 
 describe("--- Day 1: Chronal Calibration ---", () => {
 

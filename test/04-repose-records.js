@@ -1,6 +1,6 @@
 const expect = require("chai").expect;
 
-const {parseRecords, findMostAsleepGuard, findMostAsleepMinute, findGuardMostAsleepOnSameMinute} = require("../src/04-repose-records");
+const {parseRecords, findMostAsleepGuard, findMostAsleepMinute, findGuardMostAsleepOnSameMinute} = require("../src/04/04-repose-records");
 
 describe("--- Day 4: Repose Record ---", () => {
 

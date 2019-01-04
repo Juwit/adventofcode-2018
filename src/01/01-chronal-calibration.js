@@ -35,7 +35,7 @@ function computeFrequencyUntilRepetition(frequencies){
 }
 
 function solve(){
-    const myInput = require("fs").readFileSync("data/01-chronal-calibration.txt").toString();
+    const myInput = require("fs").readFileSync("src/01/input.txt").toString();
     const frequencies = myInput.split("\n");
 
     const part1 = computeFrequency(frequencies);

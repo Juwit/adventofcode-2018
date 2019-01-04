@@ -96,7 +96,7 @@ function findGuardMostAsleepOnSameMinute(records){
 }
 
 function solve(){
-    const myInput = require("fs").readFileSync("data/04-repose-records.txt").toString();
+    const myInput = require("fs").readFileSync("src/04/input.txt").toString();
     const records = parseRecords(myInput);
 
     const part1Guard = findMostAsleepGuard(records);

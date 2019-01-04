@@ -71,7 +71,7 @@ function lowestDistanceCommonLetters(boxIds){
 }
 
 function solve(){
-    const myInput = require("fs").readFileSync("data/02-inventory-management-system.txt").toString();
+    const myInput = require("fs").readFileSync("src/02/input.txt").toString();
     const boxIds = myInput.split("\n");
 
     const part1 = checksum(boxIds);
