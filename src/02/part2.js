@@ -1,33 +1,3 @@
-function hasLetterOccurencies(count, word){
-    const counter = new Map();
-    word.split("").forEach(char => {
-        if( counter.has(char) ){
-            counter.set(char, counter.get(char) + 1);
-        }
-        else {
-            counter.set(char, 1);
-        }
-    });
-    for(let counters of counter.values()){
-        if(counters === count){
-            return true;
-        }
-    }
-    return false;
-}
-
-function twoOfAny(words){
-    return words.filter(word => hasLetterOccurencies(2, word)).length;
-}
-
-function threeOfAny(words){
-    return words.filter(word => hasLetterOccurencies(3, word)).length;
-}
-
-function checksum(boxIds) {
-    return twoOfAny(boxIds) * threeOfAny(boxIds);
-}
-
 function distance(boxIdA, boxIdB){
     let distance = 0;
     for(let i = 0; i < boxIdA.length; i++){
@@ -74,21 +44,10 @@ function solve(){
     const myInput = require("fs").readFileSync("src/02/input.txt").toString();
     const boxIds = myInput.split("\n");
 
-    const part1 = checksum(boxIds);
-    const part2= lowestDistanceCommonLetters(boxIds);
-
-    console.log("--- Day 2: Inventory Management System ---");
-    console.log(`Puzzle answer : ${part1}`);
-    console.log("--- Part Two ---");
-    console.log(`Puzzle answer : ${part2}`);
-    console.log();
+    return lowestDistanceCommonLetters(boxIds);
 }
 
 module.exports = {
-    hasLetterOccurencies,
-    twoOfAny,
-    threeOfAny,
-    checksum,
     distance,
     lowestDistance,
     lowestDistanceCommonLetters,

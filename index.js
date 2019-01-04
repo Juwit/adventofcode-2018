@@ -8,7 +8,17 @@ console.log(`Puzzle answer : ${day01Part1.solve()}`);
 console.log("--- Part Two ---");
 console.log(`Puzzle answer : ${day01Part2.solve()}`);
 
-require("./src/02/02-inventory-management-system").solve();
+console.log();
+
+const day02Part1 = require("./src/02/part1");
+const day02Part2 = require("./src/02/part2");
+console.log(day02Part1.title);
+console.log(`Puzzle answer : ${day02Part1.solve()}`);
+console.log("--- Part Two ---");
+console.log(`Puzzle answer : ${day02Part2.solve()}`);
+
+console.log();
+
 require("./src/03/03-no-matter-how-you-slice-it").solve();
 require("./src/04/04-repose-records").solve();
 require("./src/05/05-alchemical-reduction").solve();
