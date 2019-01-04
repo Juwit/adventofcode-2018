@@ -1,16 +1,4 @@
-const lineRegex = /(\d*), (\d*)/;
-
-function parse(input){
-    return input.split("\n")
-        .map(point => {
-            const [_, x, y] = lineRegex.exec(point);
-            return {x: parseInt(x),y: parseInt(y)};
-        });
-}
-
-function manhattanDistance(pointA, pointB){
-    return Math.abs(pointB.x - pointA.x) + Math.abs(pointB.y - pointA.y);
-}
+const {parse, manhattanDistance} = require("./common");
 
 function closest(point, otherPoints){
     const distanceToOthers =  otherPoints
@@ -76,51 +64,18 @@ function greatestArea(grid, points){
     return max;
 }
 
-function distanceSum(from, points){
-    return points.reduce((current, point)=>current + manhattanDistance(from, point), 0);
-}
-
-function distanceSumArea(points, maxDistance) {
-    const maxX = points.map(point => point.x).reduce((max, current) => current>max?current:max, 0) * 2;
-    const maxY = points.map(point => point.y).reduce((max, current) => current>max?current:max, 0) * 2;
-
-    const grid = new Array(maxX).fill(undefined).map(() => new Array(maxY));
-
-    let area = 0;
-
-    for(let x = 0; x < maxX; x++){
-        for(let y = 0; y < maxY; y++){
-            let point = {x,y};
-            if( distanceSum(point, points) < maxDistance ){
-                area++;
-            }
-        }
-    }
-    return area;
-}
-
 function solve(){
     const myInput = require("fs").readFileSync("src/06/input.txt").toString();
 
     const points = parse(myInput);
     const grid = buildGrid(points);
-    const part1 = greatestArea(grid, points);
-    const part2 = distanceSumArea(points, 10000);
-
-    console.log("--- Day 6: Chronal Coordinates ---");
-    console.log(`Puzzle answer : ${part1}`);
-    console.log("--- Part Two ---");
-    console.log(`Puzzle answer : ${part2}`);
-    console.log();
+    return greatestArea(grid, points);
 }
 
 module.exports = {
-    parse,
-    manhattanDistance,
     closest,
     buildGrid,
     greatestArea,
-    distanceSum,
-    distanceSumArea,
-    solve
+    solve,
+    title: "--- Day 6: Chronal Coordinates ---"
 };

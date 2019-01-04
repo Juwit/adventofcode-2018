@@ -46,6 +46,14 @@ console.log(`Puzzle answer : ${day05Part2.solve()}`);
 
 console.log();
 
-require("./src/06/06-chronal-coordinates").solve();
+const day06Part1 = require("./src/06/part1");
+const day06Part2 = require("./src/06/part2");
+console.log(day06Part1.title);
+console.log(`Puzzle answer : ${day06Part1.solve()}`);
+console.log("--- Part Two ---");
+console.log(`Puzzle answer : ${day06Part2.solve()}`);
+
+console.log();
+
 require("./src/07/07-the-sum-of-its-parts").solve();
 require("./src/08/08-memory-maneuver").solve();
