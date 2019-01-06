@@ -64,5 +64,11 @@ console.log(`Puzzle answer : ${day07Part2.solve()}`);
 
 console.log();
 
+const day08Part1 = require("./src/08/part1");
+const day08Part2 = require("./src/08/part2");
+console.log(day08Part1.title);
+console.log(`Puzzle answer : ${day08Part1.solve()}`);
+console.log("--- Part Two ---");
+console.log(`Puzzle answer : ${day08Part2.solve()}`);
 
-require("./src/08/08-memory-maneuver").solve();
+console.log();

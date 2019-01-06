@@ -1,8 +1,12 @@
 const expect = require("chai").expect;
 
-const {buildNode, metadataSum} = require("../src/08/08-memory-maneuver");
+const part1 = require("./part1");
+const part2 = require("./part2");
 
-describe("--- Day 8: Memory Maneuver ---", () => {
+const {buildNode, metadataSum} = part1;
+const {value} = part2;
+
+describe(part1.title, () => {
 
     const input = "2 3 0 3 10 11 12 1 1 0 1 99 2 1 1 2";
 
@@ -59,19 +63,19 @@ describe("--- Day 8: Memory Maneuver ---", () => {
             const nodeDSpec = [0, 1, 99];
             const nodeD = buildNode(nodeDSpec).node;
 
-            expect(nodeB.value()).to.equal(33);
-            expect(nodeD.value()).to.equal(99);
+            expect(value(nodeB)).to.equal(33);
+            expect(value(nodeD)).to.equal(99);
         });
 
         it("should compute the value of a node with children using metadata indexes", () => {
             const nodeCSpec = [1, 1, 0, 1, 99, 2];
             const nodeC = buildNode(nodeCSpec).node;
 
-            expect(nodeC.value()).to.equal(0);
+            expect(value(nodeC)).to.equal(0);
 
             const nodeASpec = input.split(" ").map(a => parseInt(a));
             const nodeA = buildNode(nodeASpec).node;
-            expect(nodeA.value()).to.equal(66);
+            expect(value(nodeA)).to.equal(66);
         });
 
     });
