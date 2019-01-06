@@ -1,8 +1,12 @@
 const expect = require("chai").expect;
 
-const {parse, dependencyMap, nextStep, order, computeTime, computeSteps} = require("../src/07/07-the-sum-of-its-parts");
+const part1 = require("./part1");
+const part2 = require("./part2");
 
-describe("--- Day 7: The Sum of Its Parts ---", () => {
+const {parse, dependencyMap, nextStep, order} = part1;
+const {computeTime, computeSteps} = part2;
+
+describe(part1.title, () => {
 
     const input = `Step C must be finished before step A can begin.
 Step C must be finished before step F can begin.

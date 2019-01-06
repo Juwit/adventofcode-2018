@@ -55,5 +55,14 @@ console.log(`Puzzle answer : ${day06Part2.solve()}`);
 
 console.log();
 
-require("./src/07/07-the-sum-of-its-parts").solve();
+const day07Part1 = require("./src/07/part1");
+const day07Part2 = require("./src/07/part2");
+console.log(day07Part1.title);
+console.log(`Puzzle answer : ${day07Part1.solve()}`);
+console.log("--- Part Two ---");
+console.log(`Puzzle answer : ${day07Part2.solve()}`);
+
+console.log();
+
+
 require("./src/08/08-memory-maneuver").solve();
