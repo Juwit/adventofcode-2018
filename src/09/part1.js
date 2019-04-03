@@ -33,7 +33,8 @@ class MarbleGame {
 
     constructor(marbleCount, playerCount = 1){
         this.circle = new Circle();
-        this.marbles = new Array(marbleCount).fill(0).map((val,idx)=> idx+1);
+        this.marbleCount = marbleCount;
+        this.currentMarble = 0;
 
         this.players = [];
         for(let i = 0; i < playerCount; i++){
@@ -45,19 +46,16 @@ class MarbleGame {
 
     playTurn(){
         // taking lowest marble
-        const [currentMarble, ...otherMarbles] = this.marbles;
-        this.marbles = otherMarbles;
-
-        if(currentMarble % 23 === 0){
+        if(this.currentMarble % 23 === 0){
             // adding score
-            this.players[this.currentPlayer].score += currentMarble;
+            this.players[this.currentPlayer].score += this.currentMarble;
 
             const removedMarble = this.circle.removeMarble7ClockWise();
 
             this.players[this.currentPlayer].score += removedMarble;
         }
         else{
-            this.circle.addMarble(currentMarble);
+            this.circle.addMarble(this.currentMarble);
         }
 
         // next player's turn !
@@ -65,12 +63,9 @@ class MarbleGame {
     }
 
     play(){
-        while(this.marbles.length !== 0){
+        while(this.currentMarble < this.marbleCount){
+            this.currentMarble++;
             this.playTurn();
-
-            if(this.marbles.length % 100 === 0){
-                console.log(`Remaining marbles : ${this.marbles.length}`);
-            }
         }
     }
 
