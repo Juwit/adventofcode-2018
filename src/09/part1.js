@@ -1,30 +1,55 @@
+class Marble{
+    constructor(value){
+        this.value = value;
+    }
+}
+
 class Circle {
 
     constructor(){
-        this.state = [0];
-        this.currentMarbleIndex = 0;
+        // array is not performant enough!
+        this.state = {value:0};
+        this.root = this.state;
+        this.state.previous = this.state;
+        this.state.next = this.state;
+    }
+
+    toArray(){
+        const res = [0];
+        let pointer = this.root.next;
+        while(pointer.value !== 0){
+            res.push(pointer.value);
+            pointer = pointer.next;
+        }
+        return res;
     }
 
     addMarble(marbleValue){
-        //find at which index to insert marble
-        this.currentMarbleIndex += 2;
-        this.currentMarbleIndex = this.currentMarbleIndex % this.state.length;
+        // find at which index to insert marble
+        const position = this.state.next;
 
-        this.state.splice(this.currentMarbleIndex+1, 0, marbleValue);
+        const previous = position.previous;
+        const next = position.next;
+
+        const marble = {value:marbleValue};
+        // inserting !
+        marble.previous = position;
+        marble.next = next;
+
+        position.next = marble;
+        next.previous = marble;
+
+        this.state = marble;
     }
 
     removeMarble7ClockWise(){
-        this.currentMarbleIndex -= 6;
-        if(this.currentMarbleIndex < 0){
-            this.currentMarbleIndex += this.state.length;
-        }
-        this.currentMarbleIndex = this.currentMarbleIndex % this.state.length;
+        const marbleToRemove = this.state.previous.previous.previous.previous.previous.previous.previous;
+        this.state = marbleToRemove.next;
 
-        const removedMarble = this.state.splice(this.currentMarbleIndex, 1);
+        // removing
+        marbleToRemove.previous.next = marbleToRemove.next;
 
-        this.currentMarbleIndex--;
-
-        return removedMarble[0];
+        return marbleToRemove.value;
     }
 
 }
@@ -45,7 +70,8 @@ class MarbleGame {
     }
 
     playTurn(){
-        // taking lowest marble
+        this.currentMarble++;
+
         if(this.currentMarble % 23 === 0){
             // adding score
             this.players[this.currentPlayer].score += this.currentMarble;
@@ -64,7 +90,6 @@ class MarbleGame {
 
     play(){
         while(this.currentMarble < this.marbleCount){
-            this.currentMarble++;
             this.playTurn();
         }
     }
@@ -80,9 +105,7 @@ function solve(){
 
     const game = new MarbleGame(marbleCount, playerCount);
 
-    // WARNING : This step takes a loooooooong time ! (about 3 minutes)
     game.play();
-
     return game.highestScore();
 }
 

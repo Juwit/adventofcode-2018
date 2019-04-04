@@ -14,27 +14,22 @@ describe(part1.title, () => {
             let circle = new Circle();
 
             circle.addMarble(1);
-            expect(circle.state).to.deep.equal([0, 1]);
+            expect(circle.toArray()).to.deep.equal([0, 1]);
 
             circle.addMarble(2);
-            expect(circle.state).to.deep.equal([0, 2, 1]);
+            expect(circle.toArray()).to.deep.equal([0, 2, 1]);
 
             circle.addMarble(3);
-            expect(circle.state).to.deep.equal([0, 2, 1, 3]);
+            expect(circle.toArray()).to.deep.equal([0, 2, 1, 3]);
 
             circle.addMarble(4);
-            expect(circle.state).to.deep.equal([0, 4, 2, 1, 3]);
+            expect(circle.toArray()).to.deep.equal([0, 4, 2, 1, 3]);
 
             circle.addMarble(5);
-            expect(circle.state).to.deep.equal([0, 4, 2, 5, 1, 3]);
+            expect(circle.toArray()).to.deep.equal([0, 4, 2, 5, 1, 3]);
 
             circle.addMarble(6);
-            expect(circle.state).to.deep.equal([0, 4, 2, 5, 1, 6, 3]);
-        });
-
-        it("should have marbles", () => {
-            let game = new MarbleGame(5);
-            expect(game.marbles).to.deep.equal([1,2,3,4,5]);
+            expect(circle.toArray()).to.deep.equal([0, 4, 2, 5, 1, 6, 3]);
         });
 
         it("should the marbles sequentially", () => {
@@ -45,7 +40,7 @@ describe(part1.title, () => {
                 game.playTurn();
             }
 
-            expect(game.circle.state).to.deep.equal([0, 4, 2, 5, 1, 3]);
+            expect(game.circle.toArray()).to.deep.equal([0, 4, 2, 5, 1, 3]);
         });
 
         it("should add score on marbles multiple of 23", () => {
@@ -55,14 +50,14 @@ describe(part1.title, () => {
             for(let i=0; i<22; i++){
                 game.playTurn();
             }
-            expect(game.circle.state).to.deep.equal([0, 16, 8, 17, 4, 18, 9, 19, 2, 20, 10, 21, 5, 22, 11, 1, 12, 6, 13, 3, 14, 7, 15]);
+            expect(game.circle.toArray()).to.deep.equal([0, 16, 8, 17, 4, 18, 9, 19, 2, 20, 10, 21, 5, 22, 11, 1, 12, 6, 13, 3, 14, 7, 15]);
 
             game.playTurn();
 
             expect(game.players[4].score).to.equal(32);
             // other players still at 0 !
             expect(game.players[0].score).to.equal(0);
-            expect(game.circle.state).to.deep.equal([0, 16, 8, 17, 4, 18, 19, 2, 20, 10, 21, 5, 22, 11, 1, 12, 6, 13, 3, 14, 7, 15]);
+            expect(game.circle.toArray()).to.deep.equal([0, 16, 8, 17, 4, 18, 19, 2, 20, 10, 21, 5, 22, 11, 1, 12, 6, 13, 3, 14, 7, 15]);
         });
 
         it("should then continue the game", () => {
@@ -73,7 +68,7 @@ describe(part1.title, () => {
                 game.playTurn();
             }
 
-            expect(game.circle.state).to.deep.equal([0, 16, 8, 17, 4, 18, 19, 2, 24, 20, 10, 21, 5, 22, 11, 1, 12, 6, 13, 3, 14, 7, 15]);
+            expect(game.circle.toArray()).to.deep.equal([0, 16, 8, 17, 4, 18, 19, 2, 24, 20, 10, 21, 5, 22, 11, 1, 12, 6, 13, 3, 14, 7, 15]);
         });
 
         const testData = [
@@ -93,7 +88,7 @@ describe(part1.title, () => {
     });
 
     describe("--- Part Two ---", () => {
-
+        // no tests here, i've just refactored part 1 code using a new data structure
     });
 
 });
