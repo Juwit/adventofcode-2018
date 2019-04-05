@@ -40,6 +40,8 @@ function setUpSky(stars){
 
     width = xmax - xmin;
     height = ymax - ymin;
+
+    return height;
 }
 
 function print(stars){

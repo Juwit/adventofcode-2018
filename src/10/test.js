@@ -95,11 +95,7 @@ describe(part1.title, () => {
     });
 
     describe("--- Part Two ---", () => {
-
-        it("should work", () => {
-            expect(true).to.equal(true);
-        });
-
+        // no tests here, I've just counted the iterations :)
     });
 
 });
