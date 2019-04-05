@@ -23,7 +23,7 @@ function computeGridPowerLevels(gridSerialNumber) {
     return grid;
 }
 
-function computeTotalPowers(grid) {
+function computeTotalPowers(grid, squareSize = 3) {
     let totalPowers = new Array(300).fill(0);
     totalPowers = totalPowers.map(_ => new Array(300).fill(0));
 
@@ -32,8 +32,8 @@ function computeTotalPowers(grid) {
         for (let j = 0; j < 300; j++) {
 
             // for each grid cell, get the 9 cells
-            for (let x = i; x < Math.min(i+3, 299); x++) {
-                for (let y = j; y < Math.min(j+3, 299); y++) {
+            for (let x = i; x < Math.min(i+squareSize, 299); x++) {
+                for (let y = j; y < Math.min(j+squareSize, 299); y++) {
                     totalPowers[i][j] += grid[x][y];
                 }
             }
@@ -44,12 +44,11 @@ function computeTotalPowers(grid) {
 }
 
 function maxTotalPower(totalPowersGrid){
-    let max = 0;
-    const coordinates = {x:0, y:0};
+    const coordinates = {x:0, y:0, totalPower: 0};
     for (let i = 0; i < 300; i++) {
         for (let j = 0; j < 300; j++) {
-            if(totalPowersGrid[i][j] > max){
-                max = totalPowersGrid[i][j];
+            if(totalPowersGrid[i][j] > coordinates.totalPower){
+                coordinates.totalPower = totalPowersGrid[i][j];
                 coordinates.x = i + 1;
                 coordinates.y = j + 1;
             }
